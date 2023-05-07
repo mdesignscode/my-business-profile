@@ -1,0 +1,46 @@
+@use 'variables' as *;
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  color: $light;
+  background: linear-gradient(170deg, $accentOne 0%, $primary 100%);
+  height: 100vh;
+  font-family: $text;
+  overflow: hidden scroll;
+  font-size: 1.4em;
+  display: flex;
+  flex-direction: column;
+
+  @media (max-width: 768px) {
+    font-size: 1.2em;
+  }
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+.page {
+  flex: 1;
+}
+
+.script {
+  font-family: $script;
+  line-height: 1;
+}

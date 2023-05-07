@@ -1,0 +1,105 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+main {
+  flex: 1;
+}
+
+.header {
+  font-family: $text;
+  @include setFlexbox($height: 100%);
+
+  .script {
+    font-size: 1.25em;
+  }
+
+  .hero_title {
+    @include setFlexbox($width: 60%, $height: 80%, $column: true);
+    padding: 10% 2% 0 8%;
+
+    .Typewriter {
+      .Typewriter__wrapper {
+        .heading {
+          font-size: 38px;
+          font-family: $heading;
+        }
+
+        br {
+          margin-bottom: 0.75em;
+        }
+      }
+    }
+
+    .hero_title__buttons {
+      display: flex;
+      gap: 1em;
+      margin-top: 1em;
+
+      button {
+        @include setButton;
+        opacity: 0;
+
+        &.flip {
+          transform-style: preserve-3d;
+          animation: flip-x 1s forwards;
+        }
+      }
+    }
+  }
+
+  .hero_image {
+    @include setFlexbox($width: 40%, $height: 100%);
+    padding-top: 3%;
+
+    img {
+      opacity: 0;
+      width: 100%;
+      margin-left: -4%;
+      transform-style: preserve-3d;
+      animation: flip-y 1s 2s forwards;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero_title {
+      width: 100%;
+      padding: 8% 12%;
+
+      .Typewriter {
+        font-size: calc(32px - 40%);
+
+        .heading {
+          font-size: calc(38px - 40%);
+        }
+      }
+    }
+
+    .hero_image {
+      display: none;
+    }
+  }
+}
+
+@keyframes flip-x {
+  0% {
+    transform: perspective(800px) rotateX(-90deg);
+    opacity: 0;
+  }
+
+  100% {
+    transform: perspective(800px) rotateX(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes flip-y {
+  0% {
+    transform: perspective(800px) rotateY(-90deg);
+    opacity: 0;
+  }
+
+  100% {
+    transform: perspective(800px) rotateY(0deg);
+    opacity: 1;
+  }
+}
